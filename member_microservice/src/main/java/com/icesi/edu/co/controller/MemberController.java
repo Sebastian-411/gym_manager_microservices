@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/gym/member")
 public class MemberController {
 
     @Autowired
@@ -34,7 +34,8 @@ public class MemberController {
 
     @GetMapping("/exist/{id}")
     @Operation(summary = "Get a member by ID", description = "This endpoint allows retrieving a member by its ID.")
-    public Boolean existsMember(@Parameter(description = "The ID of the member to be retrieved", required = true) @PathVariable Long id) {
+    public Boolean existsMember(
+            @Parameter(description = "The ID of the member to be retrieved", required = true) @PathVariable Long id) {
         return memberService.existsMember(id);
     }
 }

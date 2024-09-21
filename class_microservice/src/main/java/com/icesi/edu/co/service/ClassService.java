@@ -47,7 +47,7 @@ public class ClassService {
 
     public Class programClass(Class cl) {
         Boolean trainerAvalaible = restTemplate.getForObject(
-                "http://localhost:8081/api/gym/trainer/" + cl.getIdTrainer().getIdTrainer(), Boolean.class);
+                "http://localhost:8081/api/gym/trainer/exist/" + cl.getIdTrainer().getIdTrainer(), Boolean.class);
 
         if (!trainerAvalaible) {
             throw new RuntimeException("El entrenador no existe o no está disponible");

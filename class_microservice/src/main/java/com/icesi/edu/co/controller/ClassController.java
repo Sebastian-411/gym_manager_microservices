@@ -14,28 +14,22 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/gym")
+@RequestMapping("/api/gym/class")
 public class ClassController {
 
     @Autowired
     private ClassService gymService;
 
-    @PostMapping("/class")
+    @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')")
-    @Operation(
-            summary = "Programar una nueva clase",
-            description = "Permite a un entrenador programar una nueva clase en el sistema."
-    )
+    @Operation(summary = "Programar una nueva clase", description = "Permite a un entrenador programar una nueva clase en el sistema.")
     public Class programClass(@RequestBody Class cl) {
         return gymService.programClass(cl);
     }
 
-    @GetMapping("/class")
+    @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER', 'ROLE_MEMBER')")
-    @Operation(
-            summary = "Obtener todas las clases",
-            description = "Recupera una lista de todas las clases programadas en el gimnasio."
-    )
+    @Operation(summary = "Obtener todas las clases", description = "Recupera una lista de todas las clases programadas en el gimnasio.")
     public List<Class> getAllClass() {
         return gymService.getAllClass();
     }

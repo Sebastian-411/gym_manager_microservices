@@ -13,29 +13,22 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
-@RequestMapping("/api/gym/")
+@RequestMapping("/api/gym/equiment")
 public class EquimentController {
     @Autowired
     private EquimentService equimentService;
 
-    @PostMapping("/equiment")
+    @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_TRAINER', 'ROLE_ADMIN')")
-    @Operation(
-            summary = "Añadir un nuevo equipo",
-            description = "Este endpoint permite añadir un nuevo equipo al gimnasio."
-    )
+    @Operation(summary = "Añadir un nuevo equipo", description = "Este endpoint permite añadir un nuevo equipo al gimnasio.")
     public Equiment addEquiment(
-            @Parameter(description = "El equipo que se va a añadir", required = true)
-            @RequestBody Equiment equiment) {   
+            @Parameter(description = "El equipo que se va a añadir", required = true) @RequestBody Equiment equiment) {
         return equimentService.addEquiment(equiment);
     }
 
-    @GetMapping("/equiment")
+    @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_TRAINER', 'ROLE_ADMIN')")
-    @Operation(
-            summary = "Obtener todos los equipos",
-            description = "Este endpoint permite obtener una lista de todos los equipos registrados en el sistema."
-    )
+    @Operation(summary = "Obtener todos los equipos", description = "Este endpoint permite obtener una lista de todos los equipos registrados en el sistema.")
     public List<Equiment> getAllEquiments() {
         return equimentService.getAllEquiments();
     }

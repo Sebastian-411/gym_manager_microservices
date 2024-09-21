@@ -14,37 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.icesi.edu.co.entity.Trainer;
 import com.icesi.edu.co.service.TrainerService;
 import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
-@RequestMapping("/api/gym")
+@RequestMapping("/api/gym/trainer")
 public class TrainerController {
     @Autowired
     private TrainerService trainerService;
 
-    @Operation(
-            summary = "Agregar un entrenador",
-            description = "Este endpoint permite agregar un nuevo entrenador al sistema."
-    )
-    @PostMapping("/trainer")
+    @Operation(summary = "Agregar un entrenador", description = "Este endpoint permite agregar un nuevo entrenador al sistema.")
+    @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Trainer addTrainer(@RequestBody Trainer trainer) {
         return trainerService.addTrainer(trainer);
     }
 
-    @Operation(
-            summary = "Obtener todos los entrenadores",
-            description = "Este endpoint permite obtener una lista de todos los entrenadores registrados en el sistema."
-    )
+    @Operation(summary = "Obtener todos los entrenadores", description = "Este endpoint permite obtener una lista de todos los entrenadores registrados en el sistema.")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/trainer")
+    @GetMapping
     public List<Trainer> getAllTrainers() {
         return trainerService.getAllTrainers();
     }
 
-    @Operation(
-            summary = "Obtener un entrenador por su id",
-            description = "Este endpoint permite conocer si existe un entrenador por su id."
-    )
-    @GetMapping("/trainer/{id}")
+    @Operation(summary = "Obtener un entrenador por su id", description = "Este endpoint permite conocer si existe un entrenador por su id.")
+    @GetMapping("/exist/{id}")
     public Boolean existeTrainer(@PathVariable Long id) {
         return trainerService.existeTrainer(id);
     }
