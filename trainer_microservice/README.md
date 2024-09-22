@@ -13,7 +13,10 @@
   - `Content-Type: application/json`
 - **Body:**
 ```json
-|
+{
+  "name": "Carlos Martínez",
+  "expertise": "Entrenamiento de fuerza"
+}
 ```
 
 #### Respuesta Exitosa (200 OK):
