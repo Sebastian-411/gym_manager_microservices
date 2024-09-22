@@ -11,8 +11,8 @@
 	<groupId>com.icesi.edu.co</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>member-microservice</name>
-	<description>gym managment microservice member-focused</description>
+	<name>payment-microservice</name>
+	<description>gym managment microservice payment-focused</description>
 	<url/>
 	<licenses>
 		<license/>

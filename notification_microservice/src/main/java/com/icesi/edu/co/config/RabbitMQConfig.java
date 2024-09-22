@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+
     @Bean
     public Queue inscriptionQueue() {
         return new Queue("inscription.queue", true);
@@ -18,7 +19,6 @@ public class RabbitMQConfig {
     public Queue changeScheduleQueue() {
         return new Queue("change_schedule.queue", true);
     }
-
 
     @Bean
     public Jackson2JsonMessageConverter messageConverter() {
