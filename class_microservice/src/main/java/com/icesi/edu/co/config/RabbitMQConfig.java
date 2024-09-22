@@ -13,18 +13,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
     @Bean
-    public Queue classesQueue() {
-        return new Queue("inscription.queue", true);
+    public Queue change_scheduleQueue() {
+        return new Queue("change_schedule.queue", true);
     }
 
     @Bean
-    public TopicExchange classesExchange() {
+    public TopicExchange change_scheduleExchange() {
         return new TopicExchange("classes.exchange");
     }
 
-    @Bean
-    public Binding binding(Queue classesQueue, TopicExchange classesExchange) {
-        return BindingBuilder.bind(classesQueue).to(classesExchange).with("classes.routingkey");
+    @Bean   
+    public Binding binding(Queue change_scheduleQueue, TopicExchange change_scheduleExchange) {
+        return BindingBuilder.bind(change_scheduleQueue).to(change_scheduleExchange).with("classes.routingkey");
     }
 
     @Bean

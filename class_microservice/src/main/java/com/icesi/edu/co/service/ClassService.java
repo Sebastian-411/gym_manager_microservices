@@ -7,6 +7,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.icesi.edu.co.DTO.ChangeScheduleDTO;
+import com.icesi.edu.co.DTO.ChangeScheduleRequest;
 import com.icesi.edu.co.model.Class;
 import com.icesi.edu.co.repository.ClassRepository;
 
@@ -36,8 +38,6 @@ public class ClassService {
 
     public Class updateClass(Class updatedClass) {
         Class savedClass = classRepository.save(updatedClass);
-        rabbitTemplate.convertAndSend("notification-exchange", "",
-                "Horario de clase actualizado: " + savedClass.getName());
         return savedClass;
     }
 
@@ -60,4 +60,21 @@ public class ClassService {
     }
 
     
+    public Class changeSchedule(ChangeScheduleRequest newSchedule) {
+        Optional<Class> classOptional = classRepository.findById(Long.valueOf(newSchedule.getClassId()));
+
+        if (!classOptional.isPresent()) {
+            throw new RuntimeException("La clase no existe");
+        }
+
+        Class classToUpdate = classOptional.get();
+        classToUpdate.setSchedule(newSchedule.getNewSchedule());
+
+        Class updatedClass = classRepository.save(classToUpdate);
+
+        ChangeScheduleDTO changeScheduleDTO = new ChangeScheduleDTO(updatedClass.getId(), "Horario de clase actualizado");
+        rabbitTemplate.convertAndSend("classes.exchange", "classes.routingkey", changeScheduleDTO);
+
+        return updatedClass;
+    }
 }

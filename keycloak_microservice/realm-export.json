@@ -2009,7 +2009,7 @@
         "id": "050e78b7-93d4-4bce-9d80-43bdc9c67757",
         "name": "Allowed Protocol Mapper Types",
         "providerId": "allowed-protocol-mappers",
-        "subType": "authenticated",
+        "subType": "permitAll",
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
@@ -2028,7 +2028,7 @@
         "id": "fc5cb8c4-351c-47e8-b81b-d728b89bab0b",
         "name": "Allowed Client Scopes",
         "providerId": "allowed-client-templates",
-        "subType": "authenticated",
+        "subType": "permitAll",
         "subComponents": {},
         "config": {
           "allow-default-scopes": [
@@ -2200,7 +2200,7 @@
     {
       "id": "d1a85193-a7e7-4c4e-9144-4c52ed605b16",
       "alias": "Handle Existing Account",
-      "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
+      "description": "Handle what to do if there is existing account with same email/username like permitAll identity provider",
       "providerId": "basic-flow",
       "topLevel": false,
       "builtIn": true,

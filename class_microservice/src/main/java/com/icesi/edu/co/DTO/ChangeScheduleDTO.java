@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InscriptionDTO implements Serializable {
-    private String userId;
+public class ChangeScheduleDTO implements Serializable {
+    private Long classId;
     private String message;
-    
+  
 }

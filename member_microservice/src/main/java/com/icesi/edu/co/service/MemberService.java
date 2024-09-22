@@ -22,7 +22,7 @@ public class MemberService {
         Member savedMember = memberRepository.save(member);
 
         InscriptionDTO inscriptionDTO = new InscriptionDTO(member.getId().toString(), "New member registered: " + savedMember.getName());
-        rabbiTemplate.convertAndSend("inscription.exchange", "inscription.routingkey", inscriptionDTO);
+        rabbiTemplate.convertAndSend("classes.exchange", "classes.routingkey", inscriptionDTO);
         return savedMember;
     }
 

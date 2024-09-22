@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NotificationDTO implements Serializable {
+public class InscriptionDTO implements Serializable {
     private String userId;
     private String message;
 }

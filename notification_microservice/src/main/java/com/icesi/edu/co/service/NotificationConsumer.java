@@ -4,15 +4,22 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.icesi.edu.co.DTO.NotificationDTO;
+import com.icesi.edu.co.DTO.ChangeScheduleDTO;
+import com.icesi.edu.co.DTO.InscriptionDTO;
 
 @Service
 public class NotificationConsumer {
     @Autowired
-    private NotificationService notificacionService;
+    private ClassService classService;
 
-    @RabbitListener(queues = "notificacion.queue")
-    public void recibirNotification(NotificationDTO notificacion) {
-        notificacionService.sendNotification(notificacion);
+    @RabbitListener(queues = "inscription.queue")
+    public void recibirNotificationInscription(InscriptionDTO notificacion) {
+        classService.sendNotificationInscription(notificacion);
     }
+
+    @RabbitListener(queues = "change_schedule.queue")
+    public void recibirNotificationSchedule(ChangeScheduleDTO notificacion) {
+        classService.sendNotificationChangeSchedule(notificacion);
+    }
+
 }

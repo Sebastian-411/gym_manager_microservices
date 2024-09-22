@@ -22,4 +22,6 @@ public class Class {
 
     @Embedded
     private IdTrainer idTrainer;
+
+    
 }

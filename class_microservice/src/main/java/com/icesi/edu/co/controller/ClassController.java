@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import com.icesi.edu.co.DTO.ChangeScheduleDTO;
+import com.icesi.edu.co.DTO.ChangeScheduleRequest;
 import com.icesi.edu.co.model.Class;
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -32,6 +34,13 @@ public class ClassController {
     @Operation(summary = "Obtener todas las clases", description = "Recupera una lista de todas las clases programadas en el gimnasio.")
     public List<Class> getAllClass() {
         return gymService.getAllClass();
+    }
+
+    @PutMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')")
+    @Operation(summary = "Actualizar una clase", description = "Permite a un entrenador actualizar el horario de una clase programada.")
+    public Class changeSchedule(@RequestBody ChangeScheduleRequest newChangeSchedule) {
+        return gymService.changeSchedule(newChangeSchedule);
     }
 
 }
