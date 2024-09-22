@@ -13,9 +13,9 @@ public class AppConfig {
         return new RestTemplate();
     }
 
-        @Bean
-        public StreamsBuilder streamsBuilder() {
-            return new StreamsBuilder();
-        }
+    @Bean
+    public StreamsBuilder streamsBuilder() {
+        return new StreamsBuilder();
+    }
 
 }

@@ -1,0 +1,18 @@
+2024-09-22 02:47:32.174117-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]
+2024-09-22 02:48:15.125714-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]
+2024-09-22 02:49:04.835078-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]
+2024-09-22 02:50:02.374159-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]
+2024-09-22 15:27:57.986185-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]
+2024-09-22 15:49:00.410682-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table offset_entity (topic_partition varchar(255) not null, [*]offset bigint not null, primary key (topic_partition))"; expected "identifier"; SQL statement:
+create table offset_entity (topic_partition varchar(255) not null, offset bigint not null, primary key (topic_partition)) [42001-224]

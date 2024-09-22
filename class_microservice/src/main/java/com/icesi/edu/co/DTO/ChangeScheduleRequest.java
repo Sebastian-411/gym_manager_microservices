@@ -4,29 +4,15 @@ import java.time.LocalDateTime;
 
 import org.springframework.cglib.core.Local;
 
-public class ChangeScheduleRequest {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChangeScheduleRequest implements Serializable{
     private String classId;
     private LocalDateTime newSchedule;
-
-    public ChangeScheduleRequest(String classId, LocalDateTime newSchedule) {
-        this.classId = classId;
-        this.newSchedule = newSchedule;
-    }
-
-    public String getClassId() {
-        return classId;
-    }
-
-    public void setClassId(String classId) {
-        this.classId = classId;
-    }
-
-    public LocalDateTime getNewSchedule() {
-        return newSchedule;
-    }
-
-    public void setNewSchedule(LocalDateTime newSchedule) {
-        this.newSchedule = newSchedule;
-    }
-
 }

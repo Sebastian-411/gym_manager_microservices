@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.icesi.edu.co.DTO.ChangeScheduleDTO;
 import com.icesi.edu.co.DTO.ChangeScheduleRequest;
+import com.icesi.edu.co.DTO.ReservationRequest;
 import com.icesi.edu.co.model.Class;
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -43,4 +44,10 @@ public class ClassController {
         return gymService.changeSchedule(newChangeSchedule);
     }
 
+    @PostMapping("/reservation")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER', 'ROLE_MEMBER')")
+    @Operation(summary = "Reservar una clase", description = "Permite a un miembro reservar una clase programada.")
+    public Class reserveClass(@RequestBody ReservationRequest reservationRequest) {
+        return gymService.reserveClass(reservationRequest);
+    }
 }

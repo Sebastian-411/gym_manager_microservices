@@ -1,12 +1,40 @@
-## Ejemplos de Peticiones (Postman y JSON)
+## 3. Reservar una Clase (Disponible para `ROLE_ADMIN`, `ROLE_TRAINER`, `ROLE_MEMBER`)
 
-### 1. Programar una Nueva Clase (Solo ROLE_ADMIN y ROLE_TRAINER)
+**Método:** `POST`  
+**URL:** `/api/gym/reservation`  
+**Descripción:** Permite a un miembro reservar una clase programada.
+
+## Ejemplo de Petición en Postman:
+
+- **Authorization:** Bearer Token (Para `ROLE_ADMIN`, `ROLE_TRAINER`, `ROLE_MEMBER`)
+- **Headers:**
+  - `Content-Type: application/json`
+  
+- **Body (Ejemplo en JSON):**
+```json
+{
+  "classId": 1,
+  "memberId": 1
+}
+```
+
+## Respuesta Exitosa (200 OK):
+```json
+{
+  "id": 1,
+  "classId": 1,
+  "memberId": 1,
+  "status": "Reservada"
+}
+```
+
+## 1. Programar una Nueva Clase (Solo `ROLE_ADMIN` y `ROLE_TRAINER`)
 
 **Método:** `POST`  
 **URL:** `/api/gym/class`  
 **Descripción:** Permite a un entrenador o administrador programar una nueva clase.
 
-#### Ejemplo de Petición en Postman:
+## Ejemplo de Petición en Postman:
 
 - **Authorization:** Bearer Token (Solo para `ROLE_ADMIN` o `ROLE_TRAINER`)
 - **Headers:**
@@ -23,7 +51,7 @@
 }
 ```
 
-#### Respuesta Exitosa (200 OK):
+## Respuesta Exitosa (200 OK):
 ```json
 {
   "id": 1,
@@ -37,19 +65,19 @@
 }
 ```
 
-### 2. Obtener Todas las Clases (Disponible para ROLE_ADMIN, ROLE_TRAINER, ROLE_MEMBER)
+## 2. Obtener Todas las Clases (Disponible para `ROLE_ADMIN`, `ROLE_TRAINER`, `ROLE_MEMBER`)
 
 **Método:** `GET`  
 **URL:** `/api/gym/class`  
 **Descripción:** Recupera la lista de todas las clases programadas en el gimnasio.
 
-#### Ejemplo de Petición en Postman:
+## Ejemplo de Petición en Postman:
 
 - **Authorization:** Bearer Token (Para `ROLE_ADMIN`, `ROLE_TRAINER`, `ROLE_MEMBER`)
 - **Headers:**
   - `Content-Type: application/json`
 
-#### Respuesta Exitosa (200 OK):
+## Respuesta Exitosa (200 OK):
 ```json
 [
   {
@@ -74,4 +102,3 @@
   }
 ]
 ```
-

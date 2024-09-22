@@ -123,6 +123,7 @@
       }
     ],
     "client": {
+      "Payment-services": [],
       "realm-management": [
         {
           "id": "01e8c0e0-381b-4715-bf2c-d92aa3e68292",
@@ -554,6 +555,22 @@
       "groups": []
     },
     {
+      "id": "77ac7648-3738-477d-9319-5e2b5c3dd7cb",
+      "username": "service-account-payment-services",
+      "emailVerified": false,
+      "createdTimestamp": 1726966221057,
+      "enabled": true,
+      "totp": false,
+      "serviceAccountClientId": "Payment-services",
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "default-roles-gym"
+      ],
+      "notBefore": 0,
+      "groups": []
+    },
+    {
       "id": "3d641d22-10fc-4182-9638-f6d143c374ef",
       "username": "service-account-trainer-services",
       "emailVerified": false,
@@ -611,7 +628,7 @@
         "http://localhost:8083/*"
       ],
       "webOrigins": [
-        ""
+        "http://localhost:8083/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -717,7 +734,7 @@
         "http://localhost:8084/*"
       ],
       "webOrigins": [
-        ""
+        "http://localhost:8084/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -822,7 +839,7 @@
         "http://localhost:8082/*"
       ],
       "webOrigins": [
-        ""
+        "http://localhost:8082/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -911,6 +928,108 @@
       ]
     },
     {
+      "id": "1aba4979-130d-484b-8a88-6582a76b6891",
+      "clientId": "Payment-services",
+      "name": "Payment-services",
+      "description": "",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "**********",
+      "redirectUris": [
+        "http://localhost:8086/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8086"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oidc.ciba.grant.enabled": "false",
+        "client.secret.creation.time": "1726966221",
+        "backchannel.logout.session.required": "true",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "display.on.consent.screen": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "protocolMappers": [
+        {
+          "id": "c83f7d31-11fd-4421-9654-5cea7721b582",
+          "name": "Client ID",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "client_id",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "client_id",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "c396d6d0-c823-4008-a35e-24595a4613ae",
+          "name": "Client IP Address",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientAddress",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientAddress",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "a2f9f760-7244-4469-8b0a-496254cffa3b",
+          "name": "Client Host",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usersessionmodel-note-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.session.note": "clientHost",
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "clientHost",
+            "jsonType.label": "String"
+          }
+        }
+      ],
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "roles",
+        "profile",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
       "id": "37533d2a-6a00-4ae7-90a4-ee40d9c82c1a",
       "clientId": "Trainer-services",
       "name": "Trainer-services",
@@ -927,7 +1046,7 @@
         "http://localhost:8081/*"
       ],
       "webOrigins": [
-        ""
+        "http://localhost:8081/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -2009,7 +2128,7 @@
         "id": "050e78b7-93d4-4bce-9d80-43bdc9c67757",
         "name": "Allowed Protocol Mapper Types",
         "providerId": "allowed-protocol-mappers",
-        "subType": "permitAll",
+        "subType": "authenticated",
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
@@ -2028,7 +2147,7 @@
         "id": "fc5cb8c4-351c-47e8-b81b-d728b89bab0b",
         "name": "Allowed Client Scopes",
         "providerId": "allowed-client-templates",
-        "subType": "permitAll",
+        "subType": "authenticated",
         "subComponents": {},
         "config": {
           "allow-default-scopes": [
@@ -2200,7 +2319,7 @@
     {
       "id": "d1a85193-a7e7-4c4e-9144-4c52ed605b16",
       "alias": "Handle Existing Account",
-      "description": "Handle what to do if there is existing account with same email/username like permitAll identity provider",
+      "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
       "topLevel": false,
       "builtIn": true,
