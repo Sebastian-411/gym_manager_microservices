@@ -1,6 +1,8 @@
 package com.icesi.edu.co.config;
 
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +25,15 @@ public class GatewayConfig {
             }
             return chain.filter(exchange);
         };
+    }
+
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder, EquipmentAggregationFilter equipmentAggregationFilter) {
+        return builder.routes()
+                .route("equipments-service", r -> r.path("/api/gym/equipments/search")
+                .filters(f -> f.filter(equipmentAggregationFilter))
+                .uri("no://op"))
+                .build();
     }
 
 }
